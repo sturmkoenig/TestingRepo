@@ -1,0 +1,3194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tbf.daimler.com" targetNamespace="http://tbf.daimler.com" version="1.0">
+
+  <xs:element name="deleteDocumentationChangeOrderContentRequest" type="tns:deleteDocumentationChangeOrderContentRequest"/>
+
+  <xs:element name="deleteEngineeringChangeOrderContentRequest" type="tns:deleteEngineeringChangeOrderContentRequest"/>
+
+  <xs:element name="ecoResponse" type="tns:ecoResponse"/>
+
+  <xs:element name="releaseDocumentationChangeOrderRequest" type="tns:releaseDocumentationChangeOrderRequest"/>
+
+  <xs:element name="releaseEngineeringChangeOrderRequest" type="tns:releaseEngineeringChangeOrderRequest"/>
+
+  <xs:element name="writeDistributionChangeOrderContentRequest" type="tns:writeDistributionChangeOrderContentRequest"/>
+
+  <xs:element name="writeDocumentationChangeOrderContentRequest" type="tns:writeDocumentationChangeOrderContentRequest"/>
+
+  <xs:element name="writeDocumentationChangeOrderRequest" type="tns:writeDocumentationChangeOrderRequest"/>
+
+  <xs:element name="writeEngineeringChangeOrderContentRequest" type="tns:writeEngineeringChangeOrderContentRequest"/>
+
+  <xs:element name="writeEngineeringChangeOrderRequest" type="tns:writeEngineeringChangeOrderRequest"/>
+
+  <xs:complexType name="deleteDocumentationChangeOrderContentRequest">
+    <xs:complexContent>
+      <xs:extension base="tns:writeAbstractEcoRequest">
+        <xs:sequence/>
+        <xs:attribute name="documentationChangeOrderIdentifier" type="xs:long" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="writeAbstractEcoRequest">
+    <xs:sequence/>
+    <xs:attribute name="accessControlActive" type="xs:boolean" use="required"/>
+    <xs:attribute name="requestIdentifier" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="deleteEngineeringChangeOrderContentRequest">
+    <xs:complexContent>
+      <xs:extension base="tns:writeAbstractEcoRequest">
+        <xs:sequence/>
+        <xs:attribute name="identifier" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="releaseDocumentationChangeOrderRequest">
+    <xs:complexContent>
+      <xs:extension base="tns:writeAbstractEcoRequest">
+        <xs:sequence/>
+        <xs:attribute name="documentationChangeOrderIdentifier" type="xs:long"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="releaseEngineeringChangeOrderRequest">
+    <xs:complexContent>
+      <xs:extension base="tns:writeAbstractEcoRequest">
+        <xs:sequence/>
+        <xs:attribute name="identifier" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="writeDistributionChangeOrderContentRequest">
+    <xs:complexContent>
+      <xs:extension base="tns:writeAbstractEcoRequest">
+        <xs:sequence>
+          <xs:element name="distributionChangOrderContent" type="tns:distributionChangeOrderContent"/>
+        </xs:sequence>
+        <xs:attribute name="distributionChangeOrderIdentifier" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="distributionChangeOrderContent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="distributionChangeOrderNewElement" type="tns:distributionChangeOrderChangedElement"/>
+      <xs:element minOccurs="0" name="distributionChangeOrderInvalidElement" type="tns:distributionChangeOrderChangedElement"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="distributionChangeOrderChangedElement">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="majorComponent" type="tns:majorComponentCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="vehicle" type="tns:vehicleCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="majorComponentType" type="tns:majorComponentTypeCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="vehicleType" type="tns:vehicleTypeCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="modelElementUsage" type="tns:modelElementUsageCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="partsList" type="tns:partsListCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="part" type="tns:partCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="hardware" type="tns:hardwareCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="partUsage" type="tns:partUsageCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="engineeringOrder" type="tns:engineeringOrderCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dataset" type="tns:datasetCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="diagnostics" type="tns:diagnosticsCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="flashwareContainer" type="tns:flashwareContainerCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="parameter" type="tns:parameterCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="script" type="tns:scriptCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="software" type="tns:softwareCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="flashwareObjectUsage" type="tns:flashwareObjectUsageCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="flashwareRelation" type="tns:flashwareRelationCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="code" type="tns:codeCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codeUsage" type="tns:codeUsageCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codeBundle" type="tns:codeBundleCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="generalFeasibility" type="tns:generalFeasibilityCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="feature" type="tns:featureCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="featureUsage" type="tns:featureUsageCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="alternative" type="tns:alternativeCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="geoPosition" type="tns:geoPositionCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="geoPositionPackage" type="tns:geoPositionPackageCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="geoPositionUsage" type="tns:geoPositionUsageCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="color" type="tns:colorCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="colorLocation" type="tns:colorLocationCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="colorPart" type="tns:colorPartCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="colorPackage" type="tns:colorPackageCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="majorComponentApplication" type="tns:majorComponentApplicationCCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="majorComponentCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="distributionTaskCO">
+    <xs:sequence/>
+    <xs:attribute name="distributionDestination" type="tns:distributionDestination" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="majorComponentTypeCCO">
+    <xs:complexContent>
+      <xs:extension base="tns:modelTypeCCO">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="modelTypeCCO">
+    <xs:sequence>
+      <xs:element name="steeringType" type="tns:steeringType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="modelIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleTypeCCO">
+    <xs:complexContent>
+      <xs:extension base="tns:modelTypeCCO">
+        <xs:sequence>
+          <xs:element name="bodyType" type="tns:bodyType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="modelElementUsageCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="modelIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="position" type="xs:short" use="required"/>
+    <xs:attribute name="moduleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="subModuleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="modelElementObjectType" type="tns:modelElementObjectType" use="required"/>
+    <xs:attribute name="legacyScope" type="xs:string"/>
+    <xs:attribute name="modelElementIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="partsListCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="partCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="hardwareCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="partUsageCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="partUsageParentElementObjectType" type="tns:partUsageParentElementObjectType" use="required"/>
+    <xs:attribute name="partUsageParentElementIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="position" type="xs:int" use="required"/>
+    <xs:attribute name="partUsageChildElementIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="partUsageChildElementObjectType" type="tns:partUsageChildElementObjectType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="engineeringOrderCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="datasetCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="diagnosticsCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="flashwareContainerCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="parameterCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="scriptCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="softwareCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="flashwareObjectUsageCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="flashwareRelevantObjectIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="position" type="xs:short" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="flashwareRelationCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="flashwareRelevantObjectIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="relatedFlashwareRelevantObjectIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="codeCCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="distributionTasks">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="codeUsageCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="modelIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="position" type="xs:short" use="required"/>
+    <xs:attribute name="moduleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="subModuleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="legacyScope" type="xs:string"/>
+    <xs:attribute name="codeIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="codeBundleCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="generalFeasibilityCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="codeIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="position" type="xs:short" use="required"/>
+    <xs:attribute name="subModuleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="legacyScope" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="featureCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="featureUsageCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="majorComponentApplicationIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="moduleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="subModuleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="position" type="xs:short" use="required"/>
+    <xs:attribute name="legacyScope" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="alternativeCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="partUsageParentElementIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="alternativeIdentifier" type="xs:short" use="required"/>
+    <xs:attribute name="partUsageParentElementObjectType" type="tns:partUsageParentElementObjectType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="geoPositionCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="geoPositionPackageIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="position" type="xs:short" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="geoPositionPackageCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="geoPositionUsageCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="modelIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="moduleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="subModuleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="modelElementUsagePosition" type="xs:short" use="required"/>
+    <xs:attribute name="modelElementUsageLegacyDifferentiationNumber" type="xs:int" use="required"/>
+    <xs:attribute name="geoPositionPackageIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="colorCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="colorLocationCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="colorPartCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="partIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="colorIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="colorPackageCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="majorComponentApplicationCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="writeDocumentationChangeOrderContentRequest">
+    <xs:complexContent>
+      <xs:extension base="tns:writeAbstractEcoRequest">
+        <xs:sequence>
+          <xs:element name="documentationChangeOrderContent" type="tns:documentationChangeOrderContent"/>
+          <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="documentationChangeOrderIdentifier" type="xs:long" use="required"/>
+        <xs:attribute name="accessAccountIdentifier" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="documentationChangeOrderContent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documentationChangeOrderNewElement" type="tns:dcoChangedElement"/>
+      <xs:element minOccurs="0" name="documentationChangeOrderChangedElement" type="tns:dcoChangedElement"/>
+      <xs:element minOccurs="0" name="documentationChangeOrderInvalidElement" type="tns:dcoChangedElement"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dcoChangedElement">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="billOfMaterialScope" type="tns:billOfMaterialScopeCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codeFunctionModule" type="tns:codeFunctionModuleCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codeNavigationModule" type="tns:codeNavigationModuleCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="designApprovalUnit" type="tns:designApprovalUnitCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="electronicControlUnitQualifier" type="tns:electronicControlUnitQualifierCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="functionModule" type="tns:functionModuleCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="group" type="tns:groupCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="labelingArea" type="tns:labelingAreaCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="legalRegulation" type="tns:legalRegulationCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="legalRegulationReference" type="tns:legalRegulationReferenceCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="mainCodeNavigationModule" type="tns:mainCodeNavigationModuleCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="mainGroup" type="tns:mainGroupCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="mainNavigationModule" type="tns:mainNavigationModuleCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="modelScope" type="tns:modelScopeCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="navigationModule" type="tns:navigationModuleCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="pointOfInstallation" type="tns:pointOfInstallationCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="pointOfUsage" type="tns:pointOfUsageCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="project" type="tns:projectCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="sparePartUsage" type="tns:sparePartUsageCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="billOfMaterialScopeCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="identifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="moduleCategoryIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="billOfMaterialScopeVersion" type="tns:billOfMaterialScopeVersionCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="billOfMaterialScopeVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="nomenclature" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="obsolete" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="multiLangString">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="language" type="xs:int"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="codeFunctionModuleCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="identifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="moduleCategoryIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="codeFunctionModuleVersion" type="tns:codeFunctionModuleVersionCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="codeFunctionModuleVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="nomenclature" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="obsolete" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="codeNavigationModuleCO">
+    <xs:complexContent>
+      <xs:extension base="tns:moduleCategoryCO">
+        <xs:sequence>
+          <xs:element name="codeNavigationModuleVersion" type="tns:codeNavigationModuleVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="moduleCategoryCO">
+    <xs:sequence/>
+    <xs:attribute name="mainModuleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="codeNavigationModuleVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:moduleCategoryVersionCO">
+        <xs:all/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="moduleCategoryVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element name="obsolete" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="designApprovalUnitCO">
+    <xs:sequence>
+      <xs:element name="designApprovalUnitVersion" type="tns:designApprovalUnitVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="designApprovalUnitVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="electronicControlUnitQualifierCO">
+    <xs:sequence>
+      <xs:element name="shortIdentifier" type="xs:string"/>
+      <xs:element name="partNumberEnding" type="xs:short"/>
+      <xs:element minOccurs="0" name="electronicControlUnitQualifierVersion" type="tns:electronicControlUnitQualifierVersionCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="electronicControlUnitQualifierVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="functionModuleCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="identifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="moduleCategoryIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="parentSubModuleCategoryIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="sequenceNumber" type="xs:short"/>
+      <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="functionModuleVersion" type="tns:functionModuleVersionCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="functionModuleVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="nomenclature" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="obsolete" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="groupCO">
+    <xs:complexContent>
+      <xs:extension base="tns:moduleCategoryCO">
+        <xs:sequence>
+          <xs:element name="groupVersion" type="tns:groupVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="groupVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:moduleCategoryVersionCO">
+        <xs:all/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="labelingAreaCO">
+    <xs:sequence>
+      <xs:element name="labelingAreaVersion" type="tns:labelingAreaVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="labelingAreaVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="subjectArea" nillable="true" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="nomenclature" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="regulation" type="xs:string"/>
+      <xs:element minOccurs="0" name="country" type="tns:country"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="legalRegulationCO">
+    <xs:sequence>
+      <xs:element name="legalRegulationVersion" type="tns:legalRegulationVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="legalRegulationIdentifier" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="legalRegulationVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element name="country" type="tns:country"/>
+      <xs:element name="article" type="xs:string"/>
+      <xs:element name="paragraph" type="xs:string"/>
+      <xs:element name="section" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="legalRegulationReferenceCO">
+    <xs:sequence>
+      <xs:element name="legalRegulationReferenceVersion" type="tns:legalRegulationReferenceVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="legalRegulationIdentifier" type="xs:int" use="required"/>
+    <xs:attribute name="partIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="legalRegulationReferenceVersionCO">
+    <xs:sequence>
+      <xs:element name="applicable" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mainCodeNavigationModuleCO">
+    <xs:complexContent>
+      <xs:extension base="tns:mainModuleCategoryCO">
+        <xs:sequence>
+          <xs:element name="mainCodeNavigationModuleVersion" type="tns:mainCodeNavigationModuleVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="mainModuleCategoryCO">
+    <xs:sequence/>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="mainCodeNavigationModuleVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:mainModuleCategoryVersionCO">
+        <xs:all/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="mainModuleCategoryVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mainGroupCO">
+    <xs:complexContent>
+      <xs:extension base="tns:mainModuleCategoryCO">
+        <xs:sequence>
+          <xs:element name="mainGroupVersion" type="tns:mainGroupVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="mainGroupVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:mainModuleCategoryVersionCO">
+        <xs:all/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="mainNavigationModuleCO">
+    <xs:complexContent>
+      <xs:extension base="tns:mainModuleCategoryCO">
+        <xs:sequence>
+          <xs:element name="mainNavigationModuleVersion" type="tns:mainNavigationModuleVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="mainNavigationModuleVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:mainModuleCategoryVersionCO">
+        <xs:all/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="modelScopeCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="identifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="moduleCategoryIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="modelCategoryIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="modelScopeVersion" type="tns:modelScopeVersionCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="modelScopeVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="nomenclature" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="obsolete" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="navigationModuleCO">
+    <xs:complexContent>
+      <xs:extension base="tns:moduleCategoryCO">
+        <xs:sequence>
+          <xs:element name="navigationModuleVersion" type="tns:navigationModuleVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="navigationModuleVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:moduleCategoryVersionCO">
+        <xs:all/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="pointOfInstallationCO">
+    <xs:sequence>
+      <xs:element name="pointOfInstallationVersion" type="tns:pointOfInstallationVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+    <xs:attribute name="productGroup" type="tns:productGroup" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="pointOfInstallationVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pointOfUsageCO">
+    <xs:sequence>
+      <xs:element name="pointOfUsageVersion" type="tns:pointOfUsageVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="pointOfUsageVersionCO">
+    <xs:sequence>
+      <xs:element name="productGroup" type="tns:productGroup"/>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="projectCO">
+    <xs:sequence>
+      <xs:element name="projectVersion" type="tns:projectVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="projectVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="startOfProductionDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="endDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="vkDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="constructionDate1" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="constructionDate2" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="constructionDate3" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="constructionDate4" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="constructionDate5" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="constructionDate6" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="estimatedReleaseDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="dmuValidationDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="downloadDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sparePartUsageCO">
+    <xs:sequence>
+      <xs:element name="sparePartUsageVersion" type="tns:sparePartUsageVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="sparePartDomain" type="tns:sparePartDomain" use="required"/>
+    <xs:attribute name="sparePartObjectType" type="tns:sparePartObjectType" use="required"/>
+    <xs:attribute name="sparePartIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="sparePartUsageVersionCO">
+    <xs:sequence>
+      <xs:element name="type" type="tns:sparePartUsageType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="writeDocumentationChangeOrderRequest">
+    <xs:complexContent>
+      <xs:extension base="tns:writeAbstractEcoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="documentationChangeOrder" type="tns:documentationChangeOrderCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="documentationChangeOrderCO">
+    <xs:sequence>
+      <xs:element name="nomenclature" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:long"/>
+  </xs:complexType>
+
+  <xs:complexType name="writeEngineeringChangeOrderContentRequest">
+    <xs:complexContent>
+      <xs:extension base="tns:writeAbstractEcoRequest">
+        <xs:sequence>
+          <xs:element name="engineeringChangeOrderContent" type="tns:engineeringChangeOrderContent"/>
+        </xs:sequence>
+        <xs:attribute name="engineeringChangeOrderIdentifier" type="xs:string" use="required"/>
+        <xs:attribute name="accessAccountIdentifier" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="engineeringChangeOrderContent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="engineeringChangeOrderNewElement" type="tns:engineeringChangeOrderChangedElement"/>
+      <xs:element minOccurs="0" name="engineeringChangeOrderChangedElement" type="tns:engineeringChangeOrderChangedElement"/>
+      <xs:element minOccurs="0" name="engineeringChangeOrderInvalidElement" type="tns:engineeringChangeOrderChangedElement"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="engineeringChangeOrderChangedElement">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="majorComponent" type="tns:majorComponentCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="vehicle" type="tns:vehicleCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="majorComponentType" type="tns:majorComponentTypeCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="vehicleType" type="tns:vehicleTypeCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="modelElementUsage" type="tns:modelElementUsageCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="partsList" type="tns:partsListCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="part" type="tns:partCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="hardware" type="tns:hardwareCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="partUsage" type="tns:partUsageCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="flashwareContainer" type="tns:flashwareContainerCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dataset" type="tns:datasetCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="diagnostics" type="tns:diagnosticsCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="parameter" type="tns:parameterCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="script" type="tns:scriptCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="software" type="tns:softwareCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="diagnosticsElementUsage" type="tns:diagnosticsElementUsageCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="diagnosticsUsage" type="tns:diagnosticsUsageCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="flashwareContainerElementUsage" type="tns:flashwareContainerElementUsageCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="parameterUsage" type="tns:parameterUsageCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="flashwareRelation" type="tns:flashwareRelationCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="code" type="tns:codeCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codeUsage" type="tns:codeUsageCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codeBundle" type="tns:codeBundleCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="generalFeasibility" type="tns:generalFeasibilityCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="feature" type="tns:featureCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="featureUsage" type="tns:featureUsageCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="alternative" type="tns:alternativeCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="geoPosition" type="tns:geoPositionCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="geoPositionPackage" type="tns:geoPositionPackageCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="geoPositionUsage" type="tns:geoPositionUsageCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="color" type="tns:colorCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="colorLocation" type="tns:colorLocationCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="colorPart" type="tns:colorPartCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="colorPackage" type="tns:colorPackageCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="majorComponentApplication" type="tns:majorComponentApplicationCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="majorComponentCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="majorComponentVersion" type="tns:majorComponentVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="majorComponentVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="salesDescription" nillable="true" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="technicalData" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="legacyMainScope" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="variableSalesDescription" nillable="true" type="tns:variableSalesDescriptionCO"/>
+      <xs:element name="productGroup" type="tns:productGroup"/>
+      <xs:element name="leadingDesignApprovalUnit" type="tns:designApprovalUnit"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="involvedDesignApprovalUnit" nillable="true" type="tns:designApprovalUnit"/>
+      <xs:element name="mainSubModuleCategoryIdentifier" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalSubModuleCategory" nillable="true" type="tns:additionalSubModuleCategoryCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="variableSalesDescriptionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="salesDescription" type="tns:multiLangString"/>
+      <xs:element name="defaultVariableSalesDescription" type="xs:boolean"/>
+      <xs:element name="steeringType" type="tns:steeringType"/>
+      <xs:element minOccurs="0" name="codeRule" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="position" type="xs:short" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="additionalSubModuleCategoryCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="legacyScope" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="vehicleVersion" type="tns:vehicleVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="salesDescription" nillable="true" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="technicalData" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="legacyMainScope" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="variableSalesDescription" nillable="true" type="tns:variableSalesDescriptionCO"/>
+      <xs:element name="productGroup" type="tns:productGroup"/>
+      <xs:element name="leadingDesignApprovalUnit" type="tns:designApprovalUnit"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="involvedDesignApprovalUnit" nillable="true" type="tns:designApprovalUnit"/>
+      <xs:element name="mainSubModuleCategoryIdentifier" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalSubModuleCategory" nillable="true" type="tns:additionalSubModuleCategoryCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="majorComponentTypeCO">
+    <xs:complexContent>
+      <xs:extension base="tns:modelTypeCO">
+        <xs:sequence>
+          <xs:element name="modelTypeVersion" type="tns:majorComponentTypeVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="modelTypeCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="steeringType" type="tns:steeringType"/>
+    </xs:sequence>
+    <xs:attribute name="modelIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="majorComponentTypeVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:modelTypeVersionCO">
+        <xs:all/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="modelTypeVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element name="changeRequest" type="xs:string"/>
+      <xs:element minOccurs="0" name="katashikiModelNumber" type="xs:string"/>
+      <xs:element name="leadingDesignApprovalUnit" type="tns:designApprovalUnit"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="involvedDesignApprovalUnit" type="tns:designApprovalUnit"/>
+      <xs:element name="mainSubModuleCategoryIdentifier" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalSubModuleCategory" type="tns:additionalSubModuleCategoryCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleTypeCO">
+    <xs:complexContent>
+      <xs:extension base="tns:modelTypeCO">
+        <xs:sequence>
+          <xs:element name="bodyType" type="tns:bodyType"/>
+          <xs:element name="modelTypeVersion" type="tns:vehicleTypeVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="vehicleTypeVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:modelTypeVersionCO">
+        <xs:all/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="modelElementUsageCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="modelElementUsageVersion" type="tns:modelElementUsageVersionCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="parentElementDistributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="modelIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="position" type="xs:short" use="required"/>
+    <xs:attribute name="moduleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="subModuleCategoryIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="modelElementUsageVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element name="steeringType" type="tns:steeringType"/>
+      <xs:element name="maturityLevel" type="tns:modelElementUsageMaturityLevel"/>
+      <xs:element name="quantity" type="xs:int"/>
+      <xs:element minOccurs="0" name="dispositionRelevant" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="codeRule" type="xs:string"/>
+      <xs:element minOccurs="0" name="legacyScope" type="xs:string"/>
+      <xs:element name="productGroup" type="tns:productGroup"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="pointOfUsage" nillable="true" type="tns:modelElementUsagePointOfUsageCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="pointOfInstallation" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="childElementDistributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="modelElementObjectType" type="tns:modelElementObjectType" use="required"/>
+    <xs:attribute name="modelElementIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="modelElementUsagePointOfUsageCO">
+    <xs:sequence/>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+    <xs:attribute name="type" type="tns:pointOfUsageType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="partsListCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="partsListVersion" type="tns:partsListVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="partsListVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element name="mainSubModuleCategoryIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="legacyMainScope" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalSubModuleCategory" nillable="true" type="tns:additionalSubModuleCategoryCO"/>
+      <xs:element name="leadingDesignApprovalUnit" type="tns:designApprovalUnit"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="involvedDesignApprovalUnit" nillable="true" type="tns:designApprovalUnit"/>
+      <xs:element name="type" type="tns:partsListType"/>
+      <xs:element minOccurs="0" name="geometryVersion" type="xs:short"/>
+      <xs:element name="steeringType" type="tns:steeringType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="partsListVariationCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="changeLetter" type="xs:string"/>
+      <xs:element minOccurs="0" name="installationType" type="tns:installationType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="fastenerFeature" nillable="true" type="tns:fastenerFeatureCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="attachedPartInstallationFeature" nillable="true" type="tns:attachedPartsListInstallationFeatureCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="mainPartInstallationFeature" nillable="true" type="tns:mainPartInstallationFeatureCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fastenerFeatureCO">
+    <xs:sequence>
+      <xs:element name="fastenerCategory" type="tns:fastenerCategory"/>
+      <xs:element name="diameter" type="xs:double"/>
+      <xs:element minOccurs="0" name="length" type="xs:double"/>
+      <xs:element minOccurs="0" name="minimumGripLength" type="xs:double"/>
+      <xs:element minOccurs="0" name="maximumGripLength" type="xs:double"/>
+      <xs:element name="fastenerType" type="tns:fastenerType"/>
+      <xs:element name="partIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="diameterReduction" type="xs:double"/>
+      <xs:element minOccurs="0" name="headHeight" type="xs:double"/>
+      <xs:element minOccurs="0" name="headDiameter" type="xs:double"/>
+      <xs:element minOccurs="0" name="threadEndHeight" type="xs:double"/>
+      <xs:element minOccurs="0" name="threadEndDiameter" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="attachedPartsListInstallationFeatureCO">
+    <xs:sequence>
+      <xs:element name="xCoordinate" type="xs:double"/>
+      <xs:element name="yCoordinate" type="xs:double"/>
+      <xs:element name="zCoordinate" type="xs:double"/>
+      <xs:element name="xNormalVector" type="xs:double"/>
+      <xs:element name="yNormalVector" type="xs:double"/>
+      <xs:element name="zNormalVector" type="xs:double"/>
+      <xs:element minOccurs="0" name="thickness" type="xs:double"/>
+      <xs:element minOccurs="0" name="diameter" type="xs:double"/>
+      <xs:element name="usage" type="tns:attachedPartInstallationUsage"/>
+      <xs:element minOccurs="0" name="fastenerType" type="tns:fastenerType"/>
+      <xs:element minOccurs="0" name="mountingRestriction" type="tns:mountingRestriction"/>
+      <xs:element name="mountingSide" type="tns:mountingSide"/>
+      <xs:element minOccurs="0" name="standardTightening" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="tighteningTorque" type="xs:double"/>
+      <xs:element minOccurs="0" name="tighteningTorquePositiveTolerance" type="xs:double"/>
+      <xs:element minOccurs="0" name="tighteningTorqueNegativeTolerance" type="xs:double"/>
+      <xs:element minOccurs="0" name="toolRotationAngle" type="xs:short"/>
+      <xs:element minOccurs="0" name="toolRotationAnglePositiveTolerance" type="xs:short"/>
+      <xs:element minOccurs="0" name="toolRotationAngleNegativeTolerance" type="xs:short"/>
+      <xs:element minOccurs="0" name="tighteningTorqueRiskClass" type="tns:tighteningTorqueRiskClass"/>
+      <xs:element minOccurs="0" name="constraintHeight" type="xs:double"/>
+      <xs:element minOccurs="0" name="constraintDiameter" type="xs:double"/>
+      <xs:element minOccurs="0" name="reduceThreadEndProjection" type="tns:reduceThreadEndProjection"/>
+      <xs:element minOccurs="0" name="minimumEngagement" type="xs:double"/>
+      <xs:element minOccurs="0" name="blindHoleDepth" type="xs:double"/>
+      <xs:element minOccurs="0" name="variableGeometry" type="xs:string"/>
+      <xs:element minOccurs="0" name="partInstanceNumber" type="xs:short"/>
+      <xs:element name="assemblyIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="connectedPartIdentifier" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="mainPartInstallationFeatureCO">
+    <xs:sequence>
+      <xs:element name="xNormalVector" type="xs:double"/>
+      <xs:element name="yNormalVector" type="xs:double"/>
+      <xs:element name="zNormalVector" type="xs:double"/>
+      <xs:element minOccurs="0" name="thickness" type="xs:double"/>
+      <xs:element minOccurs="0" name="diameter" type="xs:double"/>
+    </xs:sequence>
+    <xs:attribute name="xCoordinate" type="xs:double" use="required"/>
+    <xs:attribute name="yCoordinate" type="xs:double" use="required"/>
+    <xs:attribute name="zCoordinate" type="xs:double" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="partCO">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractPartCO">
+        <xs:sequence>
+          <xs:element name="partVersion" type="tns:partVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="abstractPartCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="partVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="mainSubModuleCategoryIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="legacyMainScope" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalSubModuleCategory" nillable="true" type="tns:additionalSubModuleCategoryCO"/>
+      <xs:element name="leadingDesignApprovalUnit" type="tns:designApprovalUnit"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="involvedDesignApprovalUnit" nillable="true" type="tns:designApprovalUnit"/>
+      <xs:element minOccurs="0" name="type" type="tns:partType"/>
+      <xs:element minOccurs="0" name="geometryVersion" type="xs:short"/>
+      <xs:element minOccurs="0" name="geometryDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="sourcePart" type="xs:string"/>
+      <xs:element minOccurs="0" name="referenceGeometry" type="xs:string"/>
+      <xs:element minOccurs="0" name="masterDataMethod" type="tns:masterDataMethod"/>
+      <xs:element name="releaseIndicator" type="tns:partReleaseIndicator"/>
+      <xs:element name="quantityUnit" type="tns:quantityUnit"/>
+      <xs:element minOccurs="0" name="coloringType" type="tns:coloringType"/>
+      <xs:element minOccurs="0" name="dataType" type="tns:dataType"/>
+      <xs:element minOccurs="0" name="documentationObligation" type="tns:documentationObligation"/>
+      <xs:element minOccurs="0" name="estimatedWeight" type="xs:double"/>
+      <xs:element minOccurs="0" name="calculatedWeight" type="xs:double"/>
+      <xs:element minOccurs="0" name="measuredWeight" type="xs:double"/>
+      <xs:element minOccurs="0" name="vehicleDocumentationRelevant" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="safetyRelevant" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="theftProtectionClass" type="tns:theftProtectionClass"/>
+      <xs:element minOccurs="0" name="certificationRelevant" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="material" nillable="true" type="tns:partMaterialCO"/>
+      <xs:element minOccurs="0" name="additionalMaterialNormForSemiFinishedProducts" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="surfaceProtectionNorm" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="auxilliaryMaterialQuality" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalNorm" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="surface" type="xs:double"/>
+      <xs:element name="seriesPreliminaryTest" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="intellectualProperty" type="tns:intellectualProperty"/>
+      <xs:element minOccurs="0" name="maturityLevel" type="tns:partMaturityLevel"/>
+      <xs:element minOccurs="0" name="colorLocationSymbol" type="xs:string"/>
+      <xs:element minOccurs="0" name="uniformPartCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="drawingSize" type="xs:string"/>
+      <xs:element minOccurs="0" name="recyclingPartType" type="tns:recyclingPartType"/>
+      <xs:element minOccurs="0" name="airConditionerFreonFilled" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="driverAirbagNumber" type="xs:short"/>
+      <xs:element minOccurs="0" name="passengerAirbagNumber" type="xs:short"/>
+      <xs:element minOccurs="0" name="pretensionerNumber" type="xs:short"/>
+      <xs:element minOccurs="0" name="electricalAirbagRecyclingSwitchLocation" type="xs:short"/>
+      <xs:element minOccurs="0" name="mechanicalAirbagRecyclingSwitchLocation" type="xs:short"/>
+      <xs:element minOccurs="0" name="changeLetter" type="xs:string"/>
+      <xs:element minOccurs="0" name="leftHandDriveSegment" type="xs:string"/>
+      <xs:element minOccurs="0" name="rightHandDriveSegment" type="xs:string"/>
+      <xs:element minOccurs="0" name="mountingLocation" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="fireCharacteristic" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="changeNotice" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="handlingOfRemainingRawMaterial" type="tns:remainsHandling"/>
+      <xs:element minOccurs="0" name="handlingOfRemainingFinishedParts" type="tns:remainsHandling"/>
+      <xs:element minOccurs="0" name="handlingOfRemainingMountedParts" type="tns:remainsHandling"/>
+      <xs:element minOccurs="0" name="handlingOfRemainingSpareParts" type="tns:remainsHandling"/>
+      <xs:element minOccurs="0" name="partExchangeability" type="tns:exchangeability"/>
+      <xs:element minOccurs="0" name="toolExchangeability" type="tns:exchangeability"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="partMaterialCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nomenclature" type="xs:string"/>
+      <xs:element minOccurs="0" name="internalNorm" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="hardwareCO">
+    <xs:complexContent>
+      <xs:extension base="tns:abstractPartCO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="hardwareVersion" type="tns:hardwareVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="hardwareVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:partVersionCO">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="electronicControlUnitQualifier" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="flashwareCharacteristicIdentifier" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="partUsageCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="partUsageVersion" type="tns:partUsageVersionCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="parentElementDistributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="partUsageParentElementObjectType" type="tns:partUsageParentElementObjectType" use="required"/>
+    <xs:attribute name="partUsageParentElementIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="position" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="partUsageVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="quantity" type="xs:double"/>
+      <xs:element name="maturityLevel" type="tns:partUsageMaturityLevel"/>
+      <xs:element minOccurs="0" name="acquisitionType" type="xs:string"/>
+      <xs:element name="pipePartUsage" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="pointOfUsageInformation" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="installationSymbol" type="xs:string"/>
+      <xs:element minOccurs="0" name="tighteningTorqueType" type="tns:tighteningTorqueType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="tighteningTorqueInformation" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="tighteningTorque" type="xs:double"/>
+      <xs:element minOccurs="0" name="tighteningTorquePositiveTolerance" type="xs:double"/>
+      <xs:element minOccurs="0" name="tighteningTorqueNegativeTolerance" type="xs:double"/>
+      <xs:element minOccurs="0" name="toolRotationAngle" type="xs:short"/>
+      <xs:element minOccurs="0" name="toolRotationAnglePositiveTolerance" type="xs:short"/>
+      <xs:element minOccurs="0" name="toolRotationAngleNegativeTolerance" type="xs:short"/>
+      <xs:element minOccurs="0" name="toolRotationSpeed" type="xs:short"/>
+      <xs:element minOccurs="0" name="toolRotationSpeedPositiveTolerance" type="xs:short"/>
+      <xs:element minOccurs="0" name="toolRotationSpeedNegativeTolerance" type="xs:short"/>
+      <xs:element minOccurs="0" name="tighteningTorqueRiskClass" type="tns:tighteningTorqueRiskClass"/>
+      <xs:element minOccurs="0" name="handlingOfRemainingRawMaterial" type="tns:remainsHandling"/>
+      <xs:element minOccurs="0" name="handlingOfRemainingFinishedParts" type="tns:remainsHandling"/>
+      <xs:element minOccurs="0" name="handlingOfRemainingMountedParts" type="tns:remainsHandling"/>
+      <xs:element minOccurs="0" name="handlingOfRemainingSpareParts" type="tns:remainsHandling"/>
+      <xs:element minOccurs="0" name="partExchangeability" type="tns:exchangeability"/>
+      <xs:element minOccurs="0" name="toolExchangeability" type="tns:exchangeability"/>
+      <xs:element minOccurs="0" name="forecast" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="oldChangeNotice" nillable="true" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="newChangeNotice" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="sparePartUsage" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="childElementDistributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="partUsageChildElementObjectType" type="tns:partUsageChildElementObjectType" use="required"/>
+    <xs:attribute name="partUsageChildElementIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="flashwareContainerCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectCO">
+        <xs:sequence>
+          <xs:element name="flashwareObjectVersion" type="tns:flashwareContainerVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="flashwareObjectCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="flashwareContainerVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectVersionCO">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="flashwareObjectVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element name="leadingDesignApprovalUnit" type="tns:designApprovalUnit"/>
+      <xs:element minOccurs="0" name="mainSubModuleCategoryIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="legacyMainScope" type="xs:string"/>
+      <xs:element minOccurs="0" name="sourceCodeVersion" type="xs:short"/>
+      <xs:element minOccurs="0" name="sourceCodeDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="releaseIndicator" type="tns:releaseIndicator"/>
+      <xs:element minOccurs="0" name="documentationObligation" type="tns:documentationObligation"/>
+      <xs:element minOccurs="0" name="vehicleDocumentationRelevant" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="safetyRelevant" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="theftProtectionClass" type="tns:theftProtectionClass"/>
+      <xs:element minOccurs="0" name="certificationRelevant" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="flashSequence" type="xs:short"/>
+      <xs:element minOccurs="0" name="seriesPrelimanaryTest" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalSubModuleCategory" nillable="true" type="tns:additionalSubModuleCategoryCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="involvedDesignApprovalUnit" nillable="true" type="tns:designApprovalUnit"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="electronicControlUnitQualifierIdentifier" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="flashwareCharacteristicIdentifier" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="datasetCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectCO">
+        <xs:sequence>
+          <xs:element name="datasetVersion" type="tns:datasetVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="datasetVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectVersionCO">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="diagnosticsCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectCO">
+        <xs:sequence>
+          <xs:element name="flashwareObjectVersion" type="tns:diagnosticsVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="diagnosticsVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectVersionCO">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="parameterCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectCO">
+        <xs:sequence>
+          <xs:element name="flashwareObjectVersion" type="tns:parameterVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="parameterVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectVersionCO">
+        <xs:sequence>
+          <xs:element name="type" type="tns:parameterType"/>
+          <xs:element minOccurs="0" name="mode" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="section" nillable="true" type="tns:parameterSectionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="parameterSectionCO">
+    <xs:sequence>
+      <xs:element name="sequenceNumber" type="xs:short"/>
+      <xs:element name="firstDigit" type="xs:short"/>
+      <xs:element name="lastDigit" type="xs:short"/>
+      <xs:element name="format" type="xs:string"/>
+      <xs:element minOccurs="0" name="operator" type="xs:string"/>
+      <xs:element minOccurs="0" name="factor" type="xs:string"/>
+      <xs:element name="defaultValue" type="tns:defaultParameterSectionValueCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="variableValue" nillable="true" type="tns:variableParameterSectionValueCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="defaultParameterSectionValueCO">
+    <xs:complexContent>
+      <xs:extension base="tns:parameterSectionValueCO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="parameterSectionValueCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sectionUnit" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="functionDescription" type="tns:multiLangString"/>
+      <xs:element name="stickerSequenceNumer" type="xs:short"/>
+      <xs:element minOccurs="0" name="stickerFormat" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="variableParameterSectionValueCO">
+    <xs:complexContent>
+      <xs:extension base="tns:parameterSectionValueCO">
+        <xs:sequence>
+          <xs:element name="parameterIdentifier" type="xs:string"/>
+          <xs:element name="value" type="xs:string"/>
+          <xs:element name="default_" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="scriptCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectCO">
+        <xs:sequence>
+          <xs:element name="flashwareObjectVersion" type="tns:scriptVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="scriptVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectVersionCO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="type" type="tns:scriptType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="softwareCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectCO">
+        <xs:sequence>
+          <xs:element name="flashwareObjectVersion" type="tns:softwareVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="softwareVersionCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectVersionCO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="type" type="tns:softwareType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="diagnosticsElementUsageCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectUsageCO">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="flashwareObjectUsageCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="flashwareObjectUsageVersion" type="tns:flashwareObjectUsageVersionCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="parentElementDistributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="flashwareRelevantObjectIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="position" type="xs:short" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="flashwareObjectUsageVersionCO">
+    <xs:sequence>
+      <xs:element name="flashwareObjectIdentifier" type="xs:string"/>
+      <xs:element name="maturityLevel" type="tns:flashwareObjectUsageMaturityLevel"/>
+      <xs:element minOccurs="0" name="codeRule" type="xs:string"/>
+      <xs:element minOccurs="0" name="productGroupIdentifier" type="tns:productGroup"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="childElementDistributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="diagnosticsUsageCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectUsageCO">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="flashwareContainerElementUsageCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectUsageCO">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="parameterUsageCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareObjectUsageCO">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="flashwareRelationCO">
+    <xs:complexContent>
+      <xs:extension base="tns:flashwareRelationCCO">
+        <xs:sequence>
+          <xs:element name="flashwareRelevantObjectObjectType" type="tns:flashwareRelevantObjectObjectType"/>
+          <xs:element name="relatedFlashwareRelevantObjectObjectType" type="tns:flashwareRelevantObjectObjectType"/>
+          <xs:element name="flashwareRelationVersion" type="tns:flashwareRelationVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="flashwareRelationVersionCO">
+    <xs:sequence>
+      <xs:element name="type" type="tns:flashwareRelationType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="codeCO">
+    <xs:complexContent>
+      <xs:extension base="tns:codeCCO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+          <xs:element name="codeVersion" type="tns:codeVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="codeVersionCO">
+    <xs:all>
+      <xs:element name="productGroup" type="tns:productGroup"/>
+      <xs:element name="mainSubModuleCategoryIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="legacyMainScope" type="xs:string"/>
+      <xs:element name="leadingDesignApprovalUnit" type="tns:designApprovalUnit"/>
+      <xs:element name="steeringType" type="tns:steeringType"/>
+      <xs:element minOccurs="0" name="nomenclature">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="remark">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="additionalSubModuleCategory">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalSubModuleCategory" nillable="true" type="tns:additionalSubModuleCategoryCO"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="involvedDesignApprovalUnit">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="involvedDesignApprovalUnit" nillable="true" type="tns:designApprovalUnit"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="codeUsageCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="codeUsageVersion" type="tns:codeUsageVersionCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="parentElementDistributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="modelIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="position" type="xs:short" use="required"/>
+    <xs:attribute name="moduleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="subModuleCategoryIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="codeUsageVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="remark" type="tns:multiLangString"/>
+      <xs:element name="steeringType" type="tns:steeringType"/>
+      <xs:element name="maturityLevel" type="tns:codeUsageMaturityLevel"/>
+      <xs:element name="legacyScope" type="xs:string"/>
+      <xs:element name="productGroup" type="tns:productGroup"/>
+      <xs:element minOccurs="0" name="additionType" type="tns:additionType"/>
+      <xs:element minOccurs="0" name="additionRule" type="xs:string"/>
+      <xs:element minOccurs="0" name="feasibilityRule" type="xs:string"/>
+      <xs:element name="useFeasibilityRuleOnAddition" type="xs:boolean"/>
+      <xs:element name="useGeneralFeasibilityOnAddition" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="childElementDistributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="codeIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="codeBundleCO">
+    <xs:complexContent>
+      <xs:extension base="tns:codeBundleCCO">
+        <xs:sequence>
+          <xs:element name="codeBundleVersion" type="tns:codeBundleVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="codeBundleVersionCO">
+    <xs:sequence>
+      <xs:element name="productGroup" type="tns:productGroup"/>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codeIdentifier" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="generalFeasibilityCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="generalFeasibilityVersion" type="tns:generalFeasibilityVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="codeIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="position" type="xs:short" use="required"/>
+    <xs:attribute name="subModuleCategoryIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="generalFeasibilityVersionCO">
+    <xs:sequence>
+      <xs:element name="steeringType" type="tns:steeringType"/>
+      <xs:element name="maturityLevel" type="tns:generalFeasibilityMaturityLevel"/>
+      <xs:element name="codeRule" type="xs:string"/>
+      <xs:element minOccurs="0" name="legacyScope" type="xs:string"/>
+      <xs:element name="productGroup" type="tns:productGroup"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="featureCO">
+    <xs:complexContent>
+      <xs:extension base="tns:featureCCO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+          <xs:element name="featureVersion" type="tns:featureVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="featureVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="legacyMainScope" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="additionalSubModuleCategory" nillable="true" type="tns:additionalSubModuleCategoryCO"/>
+      <xs:element name="mainSubModuleCategoryIdentifier" type="xs:string"/>
+      <xs:element name="leadingDesignApprovalUnit" type="tns:designApprovalUnit"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="featureUsageCO">
+    <xs:complexContent>
+      <xs:extension base="tns:featureUsageCCO">
+        <xs:sequence>
+          <xs:element name="featureUsageVersionCO" type="tns:featureUsageVersionCO"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="parentElementDistributionTask" nillable="true" type="tns:distributionTaskCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="featureUsageVersionCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="legacyScope" type="xs:string"/>
+      <xs:element minOccurs="0" name="codeRule" type="xs:string"/>
+      <xs:element name="productGroup" type="tns:productGroup"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="childElementDistributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="featureIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="alternativeCO">
+    <xs:sequence>
+      <xs:element name="alternativeVersion" type="tns:alternativeVersionCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="partUsageParentElementIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="alternativeIdentifier" type="xs:short" use="required"/>
+    <xs:attribute name="partUsageParentElementObjectType" type="tns:partUsageParentElementObjectType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="alternativeVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="alternativeOption" type="tns:alternativeOptionCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="alternativeOptionCO">
+    <xs:sequence>
+      <xs:element name="default" type="xs:boolean"/>
+    </xs:sequence>
+    <xs:attribute name="partUsagePosition" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="geoPositionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="geoPositionVersionCO" type="tns:geoPositionVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="geoPositionPackageIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="position" type="xs:short" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="geoPositionVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="type" type="tns:geoPositionType"/>
+      <xs:element minOccurs="0" name="typeCode" type="xs:string"/>
+      <xs:element name="steeringType" type="tns:steeringType"/>
+      <xs:element minOccurs="0" name="codeRule" type="xs:string"/>
+      <xs:element name="a11" type="xs:decimal"/>
+      <xs:element name="a12" type="xs:decimal"/>
+      <xs:element name="a13" type="xs:decimal"/>
+      <xs:element name="a14" type="xs:decimal"/>
+      <xs:element name="a21" type="xs:decimal"/>
+      <xs:element name="a22" type="xs:decimal"/>
+      <xs:element name="a23" type="xs:decimal"/>
+      <xs:element name="a24" type="xs:decimal"/>
+      <xs:element name="a31" type="xs:decimal"/>
+      <xs:element name="a32" type="xs:decimal"/>
+      <xs:element name="a33" type="xs:decimal"/>
+      <xs:element name="a34" type="xs:decimal"/>
+      <xs:element name="a41" type="xs:decimal"/>
+      <xs:element name="a42" type="xs:decimal"/>
+      <xs:element name="a43" type="xs:decimal"/>
+      <xs:element name="a44" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="geoPositionPackageCO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ownedAccessArea" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="geoPositionPackageVersion" type="tns:geoPositionPackageVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="geoPositionPackageVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="codeRule" type="xs:string"/>
+      <xs:element name="productGroup" type="tns:productGroup"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="geoPositionUsageCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element minOccurs="0" name="geoPositionUsageVersion" type="tns:geoPositionUsageVersionCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="parentElementDistributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="modelIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="modelElementUsagePosition" type="xs:short" use="required"/>
+    <xs:attribute name="moduleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="subModuleCategoryIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="geoPositionPackageIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="modelElementUsageLegacyDifferentiationNumber" type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="geoPositionUsageVersionCO">
+    <xs:all/>
+  </xs:complexType>
+
+  <xs:complexType name="colorCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="colorVersion" type="tns:colorVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="colorVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="material" nillable="true" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="surface" nillable="true" type="tns:multiLangString"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="colorLocationCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="colorLocationVersion" type="tns:colorLocationVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="colorLocationVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="colorPartCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="colorPartVersion" type="tns:colorPartVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="partIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="colorIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="colorPartVersionCO">
+    <xs:sequence>
+      <xs:element name="colorPart" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="colorPackageCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="colorPackageVersion" type="tns:colorPackageVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="colorPackageVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="partsListVariationCode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="majorComponentApplicationCO">
+    <xs:complexContent>
+      <xs:extension base="tns:majorComponentApplicationCCO">
+        <xs:sequence>
+          <xs:element name="majorComponentApplicationVersion" type="tns:majorComponentApplicationVersionCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="majorComponentApplicationVersionCO">
+    <xs:sequence>
+      <xs:element name="leadingDesignApprovalUnit" type="tns:designApprovalUnit"/>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="writeEngineeringChangeOrderRequest">
+    <xs:complexContent>
+      <xs:extension base="tns:writeAbstractEcoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="engineeringOrder" type="tns:engineeringOrderCO"/>
+          <xs:element minOccurs="0" name="stopNotice" type="tns:stopNoticeCO"/>
+          <xs:element minOccurs="0" name="distributionChangeOrder" type="tns:distributionChangeOrderCO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="engineeringOrderCO">
+    <xs:sequence>
+      <xs:element name="specialToolingRelevant" type="xs:boolean"/>
+      <xs:element name="circularTechnicalLetterRelevant" type="xs:boolean"/>
+      <xs:element name="emissionApprovalRelevant" type="xs:boolean"/>
+      <xs:element name="legalRelevant" type="xs:boolean"/>
+      <xs:element name="technicalDataRelevant" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="changeRequest" type="xs:string"/>
+      <xs:element minOccurs="0" name="fusoEngineeringOrder" type="xs:string"/>
+      <xs:element minOccurs="0" name="stopNoticeIdentifier" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="combinedEngineeringOrder" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="signature" nillable="true" type="tns:signatureCO"/>
+      <xs:element minOccurs="0" name="projectIdentifier" type="xs:string"/>
+      <xs:element name="leadingDesignApprovalUnit" type="tns:designApprovalUnit"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="involvedDesignApprovalUnit" nillable="true" type="tns:designApprovalUnit"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="engineeringOrderVersion" type="tns:engineeringOrderVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="signatureCO">
+    <xs:sequence>
+      <xs:element name="userRole" type="tns:userSignatureRole"/>
+      <xs:element name="userId" type="xs:string"/>
+      <xs:element name="signatureDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="engineeringOrderVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" name="reason" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="introductionDetail" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="introductionAdvice" type="tns:introductionAdvice"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stopNoticeCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="signature" nillable="true" type="tns:signatureCO"/>
+      <xs:element minOccurs="0" name="projectIdentifier" type="xs:string"/>
+      <xs:element name="leadingDesignApprovalUnit" type="tns:designApprovalUnit"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="involvedDesignApprovalUnit" nillable="true" type="tns:designApprovalUnit"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element name="stopNoticeVersion" type="tns:stopNoticeVersionCO"/>
+    </xs:sequence>
+    <xs:attribute name="stopNoticeIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="stopNoticeVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" name="reason" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+      <xs:element minOccurs="0" name="stopNoticeIdentifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="estimatedCancellationDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="extensionDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="distributionChangeOrderCO">
+    <xs:sequence>
+      <xs:element name="identifier" type="xs:string"/>
+      <xs:element name="leadingDesignApprovalUnit" type="tns:designApprovalUnit"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="involvedDesignApprovalUnit" nillable="true" type="tns:designApprovalUnit"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="signature" nillable="true" type="tns:signatureCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+      <xs:element minOccurs="0" name="projectIdentifier" type="xs:string"/>
+      <xs:element name="distributionVersion" type="tns:distributionChangeOrderVersionCO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="distributionChangeOrderVersionCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="nomenclature" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="reason" nillable="true" type="tns:multiLangString"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="remark" nillable="true" type="tns:multiLangString"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ecoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ecoFaultBean" type="tns:tbfEcoFaultBean"/>
+    </xs:sequence>
+    <xs:attribute name="service" type="xs:string"/>
+    <xs:attribute name="serviceVersion" type="xs:string"/>
+    <xs:attribute name="successful" type="xs:boolean" use="required"/>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+    <xs:attribute name="requestIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="tbfEcoFaultBean">
+    <xs:sequence>
+      <xs:element name="errorCode" type="xs:int"/>
+      <xs:element minOccurs="0" name="queryTimeStamp" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="exceptionDetail" type="tns:tbfEcoExceptionDetail"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tbfEcoExceptionDetail">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="vehicle" type="tns:vehicleCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="majorComponent" type="tns:majorComponentCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="part" type="tns:partCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="hardware" type="tns:hardwareCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="partsList" type="tns:partsListCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="modelElementUsage" type="tns:modelElementUsageCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="partUsage" type="tns:partUsageCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="flashwareContainer" type="tns:flashwareContainerCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dataset" type="tns:datasetCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="diagnostics" type="tns:diagnosticsCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="parameter" type="tns:parameterCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="script" type="tns:scriptCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="software" type="tns:softwareCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="code" type="tns:codeCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codeUsage" type="tns:codeUsageCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="generalFeasibility" type="tns:generalFeasibilityCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="alternative" type="tns:alternativeCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="sparePartUsage" type="tns:sparePartUsageCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="color" type="tns:colorCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="colorLocation" type="tns:colorLocationCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="colorPart" type="tns:colorPartCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="legalRegulationReference" type="tns:legalRegulationReferenceCCO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="constraintViolation" type="tns:tbfEcoConstraintViolationEntry"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sparePartUsageCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="sparePartDomainIdentifier" type="xs:short" use="required"/>
+    <xs:attribute name="sparePartObjectType" type="tns:sparePartObjectType" use="required"/>
+    <xs:attribute name="sparePartIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="legalRegulationReferenceCCO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="distributionTask" nillable="true" type="tns:distributionTaskCO"/>
+    </xs:sequence>
+    <xs:attribute name="legalRegulatioIdentifier" type="xs:int" use="required"/>
+    <xs:attribute name="partIdentifier" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="tbfEcoConstraintViolationEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="className" type="xs:string"/>
+      <xs:element minOccurs="0" name="fieldName" type="xs:string"/>
+      <xs:element minOccurs="0" name="invalidValue" type="xs:string"/>
+      <xs:element minOccurs="0" name="errorMessage" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="distributionDestination">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="AA"/>
+      <xs:enumeration value="AC"/>
+      <xs:enumeration value="AE"/>
+      <xs:enumeration value="AK"/>
+      <xs:enumeration value="AM"/>
+      <xs:enumeration value="AS"/>
+      <xs:enumeration value="AT"/>
+      <xs:enumeration value="AX"/>
+      <xs:enumeration value="B"/>
+      <xs:enumeration value="BX"/>
+      <xs:enumeration value="CA"/>
+      <xs:enumeration value="CE"/>
+      <xs:enumeration value="CM"/>
+      <xs:enumeration value="CN"/>
+      <xs:enumeration value="DA"/>
+      <xs:enumeration value="DB"/>
+      <xs:enumeration value="DC"/>
+      <xs:enumeration value="C"/>
+      <xs:enumeration value="DD"/>
+      <xs:enumeration value="D"/>
+      <xs:enumeration value="DE"/>
+      <xs:enumeration value="DF"/>
+      <xs:enumeration value="DH"/>
+      <xs:enumeration value="DJ"/>
+      <xs:enumeration value="J"/>
+      <xs:enumeration value="DK"/>
+      <xs:enumeration value="DL"/>
+      <xs:enumeration value="DM"/>
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="DN"/>
+      <xs:enumeration value="DP"/>
+      <xs:enumeration value="DQ"/>
+      <xs:enumeration value="DR"/>
+      <xs:enumeration value="DS"/>
+      <xs:enumeration value="DT"/>
+      <xs:enumeration value="DU"/>
+      <xs:enumeration value="U"/>
+      <xs:enumeration value="DW"/>
+      <xs:enumeration value="DX"/>
+      <xs:enumeration value="DZ"/>
+      <xs:enumeration value="Z"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="EA"/>
+      <xs:enumeration value="EB"/>
+      <xs:enumeration value="EC"/>
+      <xs:enumeration value="ED"/>
+      <xs:enumeration value="EE"/>
+      <xs:enumeration value="EF"/>
+      <xs:enumeration value="EG"/>
+      <xs:enumeration value="EH"/>
+      <xs:enumeration value="EI"/>
+      <xs:enumeration value="EJ"/>
+      <xs:enumeration value="EK"/>
+      <xs:enumeration value="EL"/>
+      <xs:enumeration value="EM"/>
+      <xs:enumeration value="EN"/>
+      <xs:enumeration value="EO"/>
+      <xs:enumeration value="EP"/>
+      <xs:enumeration value="ER"/>
+      <xs:enumeration value="ES"/>
+      <xs:enumeration value="ET"/>
+      <xs:enumeration value="EU"/>
+      <xs:enumeration value="EV"/>
+      <xs:enumeration value="F"/>
+      <xs:enumeration value="FA"/>
+      <xs:enumeration value="FB"/>
+      <xs:enumeration value="FC"/>
+      <xs:enumeration value="FD"/>
+      <xs:enumeration value="FE"/>
+      <xs:enumeration value="FF"/>
+      <xs:enumeration value="FG"/>
+      <xs:enumeration value="FH"/>
+      <xs:enumeration value="FI"/>
+      <xs:enumeration value="FK"/>
+      <xs:enumeration value="FL"/>
+      <xs:enumeration value="FM"/>
+      <xs:enumeration value="FN"/>
+      <xs:enumeration value="FO"/>
+      <xs:enumeration value="FP"/>
+      <xs:enumeration value="FQ"/>
+      <xs:enumeration value="FR"/>
+      <xs:enumeration value="FS"/>
+      <xs:enumeration value="FT"/>
+      <xs:enumeration value="FU"/>
+      <xs:enumeration value="FV"/>
+      <xs:enumeration value="FW"/>
+      <xs:enumeration value="FX"/>
+      <xs:enumeration value="FZ"/>
+      <xs:enumeration value="G"/>
+      <xs:enumeration value="H"/>
+      <xs:enumeration value="I"/>
+      <xs:enumeration value="JE"/>
+      <xs:enumeration value="JF"/>
+      <xs:enumeration value="JJ"/>
+      <xs:enumeration value="K"/>
+      <xs:enumeration value="L"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="Q"/>
+      <xs:enumeration value="R"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="SB"/>
+      <xs:enumeration value="SR"/>
+      <xs:enumeration value="SU"/>
+      <xs:enumeration value="SW"/>
+      <xs:enumeration value="T"/>
+      <xs:enumeration value="TB"/>
+      <xs:enumeration value="TD"/>
+      <xs:enumeration value="TH"/>
+      <xs:enumeration value="TI"/>
+      <xs:enumeration value="TK"/>
+      <xs:enumeration value="TP"/>
+      <xs:enumeration value="TS"/>
+      <xs:enumeration value="TV"/>
+      <xs:enumeration value="TX"/>
+      <xs:enumeration value="TY"/>
+      <xs:enumeration value="UA"/>
+      <xs:enumeration value="UB"/>
+      <xs:enumeration value="UC"/>
+      <xs:enumeration value="UD"/>
+      <xs:enumeration value="UE"/>
+      <xs:enumeration value="UG"/>
+      <xs:enumeration value="UH"/>
+      <xs:enumeration value="UM"/>
+      <xs:enumeration value="UO"/>
+      <xs:enumeration value="UP"/>
+      <xs:enumeration value="UQ"/>
+      <xs:enumeration value="UT"/>
+      <xs:enumeration value="UU"/>
+      <xs:enumeration value="UV"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="VB"/>
+      <xs:enumeration value="VF"/>
+      <xs:enumeration value="VK"/>
+      <xs:enumeration value="VM"/>
+      <xs:enumeration value="VW"/>
+      <xs:enumeration value="W"/>
+      <xs:enumeration value="WA"/>
+      <xs:enumeration value="WC"/>
+      <xs:enumeration value="WD"/>
+      <xs:enumeration value="WE"/>
+      <xs:enumeration value="WG"/>
+      <xs:enumeration value="WH"/>
+      <xs:enumeration value="WI"/>
+      <xs:enumeration value="WK"/>
+      <xs:enumeration value="WL"/>
+      <xs:enumeration value="WM"/>
+      <xs:enumeration value="WN"/>
+      <xs:enumeration value="WO"/>
+      <xs:enumeration value="WR"/>
+      <xs:enumeration value="WS"/>
+      <xs:enumeration value="WT"/>
+      <xs:enumeration value="WU"/>
+      <xs:enumeration value="WV"/>
+      <xs:enumeration value="WW"/>
+      <xs:enumeration value="WY"/>
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="XA"/>
+      <xs:enumeration value="XB"/>
+      <xs:enumeration value="XC"/>
+      <xs:enumeration value="XD"/>
+      <xs:enumeration value="XE"/>
+      <xs:enumeration value="XF"/>
+      <xs:enumeration value="XG"/>
+      <xs:enumeration value="XK"/>
+      <xs:enumeration value="XM"/>
+      <xs:enumeration value="XN"/>
+      <xs:enumeration value="XP"/>
+      <xs:enumeration value="XQ"/>
+      <xs:enumeration value="XR"/>
+      <xs:enumeration value="XS"/>
+      <xs:enumeration value="XT"/>
+      <xs:enumeration value="XV"/>
+      <xs:enumeration value="Y"/>
+      <xs:enumeration value="ZM"/>
+      <xs:enumeration value="ZV"/>
+      <xs:enumeration value="ZW"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="steeringType">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="0"/>
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="bodyType">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="9"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="modelElementObjectType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MAJOR_COMPONENT"/>
+      <xs:enumeration value="PARTS_LIST"/>
+      <xs:enumeration value="FEATURE"/>
+      <xs:enumeration value="PART"/>
+      <xs:enumeration value="HARDWARE"/>
+      <xs:enumeration value="DATASET"/>
+      <xs:enumeration value="DIAGNOSTICS"/>
+      <xs:enumeration value="FLASHWARE_CONTAINER"/>
+      <xs:enumeration value="PARAMETER"/>
+      <xs:enumeration value="SCRIPT"/>
+      <xs:enumeration value="SOFTWARE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="partUsageParentElementObjectType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Part"/>
+      <xs:enumeration value="PartsList"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="partUsageChildElementObjectType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Part"/>
+      <xs:enumeration value="FlashwareObject"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="country">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ABW"/>
+      <xs:enumeration value="AFG"/>
+      <xs:enumeration value="AGO"/>
+      <xs:enumeration value="AIA"/>
+      <xs:enumeration value="ALA"/>
+      <xs:enumeration value="ALB"/>
+      <xs:enumeration value="AND"/>
+      <xs:enumeration value="ANT"/>
+      <xs:enumeration value="ARE"/>
+      <xs:enumeration value="ARG"/>
+      <xs:enumeration value="ARM"/>
+      <xs:enumeration value="ASM"/>
+      <xs:enumeration value="ATA"/>
+      <xs:enumeration value="ATF"/>
+      <xs:enumeration value="ATG"/>
+      <xs:enumeration value="AUS"/>
+      <xs:enumeration value="AUT"/>
+      <xs:enumeration value="AZE"/>
+      <xs:enumeration value="BDI"/>
+      <xs:enumeration value="BEL"/>
+      <xs:enumeration value="BEN"/>
+      <xs:enumeration value="BES"/>
+      <xs:enumeration value="BFA"/>
+      <xs:enumeration value="BGD"/>
+      <xs:enumeration value="BGR"/>
+      <xs:enumeration value="BHR"/>
+      <xs:enumeration value="BHS"/>
+      <xs:enumeration value="BIH"/>
+      <xs:enumeration value="BLM"/>
+      <xs:enumeration value="BLR"/>
+      <xs:enumeration value="BLZ"/>
+      <xs:enumeration value="BMU"/>
+      <xs:enumeration value="BOL"/>
+      <xs:enumeration value="BRA"/>
+      <xs:enumeration value="BRB"/>
+      <xs:enumeration value="BRN"/>
+      <xs:enumeration value="BTN"/>
+      <xs:enumeration value="BUR"/>
+      <xs:enumeration value="BVT"/>
+      <xs:enumeration value="BWA"/>
+      <xs:enumeration value="CAF"/>
+      <xs:enumeration value="CAN"/>
+      <xs:enumeration value="CCK"/>
+      <xs:enumeration value="CEE"/>
+      <xs:enumeration value="CHE"/>
+      <xs:enumeration value="CHL"/>
+      <xs:enumeration value="CHN"/>
+      <xs:enumeration value="CIV"/>
+      <xs:enumeration value="CMR"/>
+      <xs:enumeration value="COD"/>
+      <xs:enumeration value="COG"/>
+      <xs:enumeration value="COK"/>
+      <xs:enumeration value="COL"/>
+      <xs:enumeration value="COM"/>
+      <xs:enumeration value="CPV"/>
+      <xs:enumeration value="CRI"/>
+      <xs:enumeration value="CSK"/>
+      <xs:enumeration value="CUB"/>
+      <xs:enumeration value="CUW"/>
+      <xs:enumeration value="CXR"/>
+      <xs:enumeration value="CYM"/>
+      <xs:enumeration value="CYP"/>
+      <xs:enumeration value="CZE"/>
+      <xs:enumeration value="DDR"/>
+      <xs:enumeration value="DEU"/>
+      <xs:enumeration value="DJI"/>
+      <xs:enumeration value="DMA"/>
+      <xs:enumeration value="DNK"/>
+      <xs:enumeration value="DOM"/>
+      <xs:enumeration value="DZA"/>
+      <xs:enumeration value="ECU"/>
+      <xs:enumeration value="EEC"/>
+      <xs:enumeration value="EGY"/>
+      <xs:enumeration value="ERI"/>
+      <xs:enumeration value="ESH"/>
+      <xs:enumeration value="ESP"/>
+      <xs:enumeration value="EST"/>
+      <xs:enumeration value="ETH"/>
+      <xs:enumeration value="FIN"/>
+      <xs:enumeration value="FJI"/>
+      <xs:enumeration value="FLK"/>
+      <xs:enumeration value="FRA"/>
+      <xs:enumeration value="FRO"/>
+      <xs:enumeration value="FSM"/>
+      <xs:enumeration value="GAB"/>
+      <xs:enumeration value="GBR"/>
+      <xs:enumeration value="GEO"/>
+      <xs:enumeration value="GGY"/>
+      <xs:enumeration value="GHA"/>
+      <xs:enumeration value="GIB"/>
+      <xs:enumeration value="GIN"/>
+      <xs:enumeration value="GLP"/>
+      <xs:enumeration value="GMB"/>
+      <xs:enumeration value="GNB"/>
+      <xs:enumeration value="GNQ"/>
+      <xs:enumeration value="GRC"/>
+      <xs:enumeration value="GRD"/>
+      <xs:enumeration value="GRL"/>
+      <xs:enumeration value="GTM"/>
+      <xs:enumeration value="GUF"/>
+      <xs:enumeration value="GUM"/>
+      <xs:enumeration value="GUY"/>
+      <xs:enumeration value="HKG"/>
+      <xs:enumeration value="HMD"/>
+      <xs:enumeration value="HND"/>
+      <xs:enumeration value="HRV"/>
+      <xs:enumeration value="HTI"/>
+      <xs:enumeration value="HUN"/>
+      <xs:enumeration value="IDN"/>
+      <xs:enumeration value="IMN"/>
+      <xs:enumeration value="IND"/>
+      <xs:enumeration value="IOT"/>
+      <xs:enumeration value="IRL"/>
+      <xs:enumeration value="IRN"/>
+      <xs:enumeration value="IRQ"/>
+      <xs:enumeration value="ISL"/>
+      <xs:enumeration value="ISR"/>
+      <xs:enumeration value="ITA"/>
+      <xs:enumeration value="JAM"/>
+      <xs:enumeration value="JEY"/>
+      <xs:enumeration value="JOR"/>
+      <xs:enumeration value="JPN"/>
+      <xs:enumeration value="KAZ"/>
+      <xs:enumeration value="KEN"/>
+      <xs:enumeration value="KGZ"/>
+      <xs:enumeration value="KHM"/>
+      <xs:enumeration value="KIR"/>
+      <xs:enumeration value="KNA"/>
+      <xs:enumeration value="KOR"/>
+      <xs:enumeration value="KWT"/>
+      <xs:enumeration value="LAO"/>
+      <xs:enumeration value="LBN"/>
+      <xs:enumeration value="LBR"/>
+      <xs:enumeration value="LBY"/>
+      <xs:enumeration value="LCA"/>
+      <xs:enumeration value="LIE"/>
+      <xs:enumeration value="LKA"/>
+      <xs:enumeration value="LSO"/>
+      <xs:enumeration value="LTU"/>
+      <xs:enumeration value="LUX"/>
+      <xs:enumeration value="LVA"/>
+      <xs:enumeration value="MAC"/>
+      <xs:enumeration value="MAF"/>
+      <xs:enumeration value="MAR"/>
+      <xs:enumeration value="MCO"/>
+      <xs:enumeration value="MDA"/>
+      <xs:enumeration value="MDG"/>
+      <xs:enumeration value="MDV"/>
+      <xs:enumeration value="MEX"/>
+      <xs:enumeration value="MHL"/>
+      <xs:enumeration value="MKD"/>
+      <xs:enumeration value="MLI"/>
+      <xs:enumeration value="MLT"/>
+      <xs:enumeration value="MMR"/>
+      <xs:enumeration value="MNE"/>
+      <xs:enumeration value="MNG"/>
+      <xs:enumeration value="MNP"/>
+      <xs:enumeration value="MOZ"/>
+      <xs:enumeration value="MRT"/>
+      <xs:enumeration value="MSR"/>
+      <xs:enumeration value="MTQ"/>
+      <xs:enumeration value="MUS"/>
+      <xs:enumeration value="MWI"/>
+      <xs:enumeration value="MYS"/>
+      <xs:enumeration value="MYT"/>
+      <xs:enumeration value="NAM"/>
+      <xs:enumeration value="NCL"/>
+      <xs:enumeration value="NER"/>
+      <xs:enumeration value="NFK"/>
+      <xs:enumeration value="NGA"/>
+      <xs:enumeration value="NIC"/>
+      <xs:enumeration value="NIU"/>
+      <xs:enumeration value="NLD"/>
+      <xs:enumeration value="NOR"/>
+      <xs:enumeration value="NPL"/>
+      <xs:enumeration value="NRU"/>
+      <xs:enumeration value="NTZ"/>
+      <xs:enumeration value="NZL"/>
+      <xs:enumeration value="OMN"/>
+      <xs:enumeration value="PAK"/>
+      <xs:enumeration value="PAN"/>
+      <xs:enumeration value="PCN"/>
+      <xs:enumeration value="PER"/>
+      <xs:enumeration value="PHL"/>
+      <xs:enumeration value="PLW"/>
+      <xs:enumeration value="PNG"/>
+      <xs:enumeration value="POL"/>
+      <xs:enumeration value="PRI"/>
+      <xs:enumeration value="PRK"/>
+      <xs:enumeration value="PRT"/>
+      <xs:enumeration value="PRY"/>
+      <xs:enumeration value="PSE"/>
+      <xs:enumeration value="PYF"/>
+      <xs:enumeration value="QAT"/>
+      <xs:enumeration value="REU"/>
+      <xs:enumeration value="ROU"/>
+      <xs:enumeration value="RUS"/>
+      <xs:enumeration value="RWA"/>
+      <xs:enumeration value="SAU"/>
+      <xs:enumeration value="SCG"/>
+      <xs:enumeration value="SDN"/>
+      <xs:enumeration value="SEN"/>
+      <xs:enumeration value="SGP"/>
+      <xs:enumeration value="SGS"/>
+      <xs:enumeration value="SHN"/>
+      <xs:enumeration value="SJM"/>
+      <xs:enumeration value="SLB"/>
+      <xs:enumeration value="SLE"/>
+      <xs:enumeration value="SLV"/>
+      <xs:enumeration value="SMR"/>
+      <xs:enumeration value="SOM"/>
+      <xs:enumeration value="SPM"/>
+      <xs:enumeration value="SRB"/>
+      <xs:enumeration value="SSD"/>
+      <xs:enumeration value="STP"/>
+      <xs:enumeration value="SUN"/>
+      <xs:enumeration value="SUR"/>
+      <xs:enumeration value="SVK"/>
+      <xs:enumeration value="SVN"/>
+      <xs:enumeration value="SWE"/>
+      <xs:enumeration value="SWZ"/>
+      <xs:enumeration value="SXM"/>
+      <xs:enumeration value="SYC"/>
+      <xs:enumeration value="SYR"/>
+      <xs:enumeration value="TCA"/>
+      <xs:enumeration value="TCD"/>
+      <xs:enumeration value="TGO"/>
+      <xs:enumeration value="THA"/>
+      <xs:enumeration value="TJK"/>
+      <xs:enumeration value="TKL"/>
+      <xs:enumeration value="TKM"/>
+      <xs:enumeration value="TLS"/>
+      <xs:enumeration value="TON"/>
+      <xs:enumeration value="TTO"/>
+      <xs:enumeration value="TUN"/>
+      <xs:enumeration value="TUR"/>
+      <xs:enumeration value="TUV"/>
+      <xs:enumeration value="TWN"/>
+      <xs:enumeration value="TZA"/>
+      <xs:enumeration value="UGA"/>
+      <xs:enumeration value="UKR"/>
+      <xs:enumeration value="UMI"/>
+      <xs:enumeration value="URY"/>
+      <xs:enumeration value="USA"/>
+      <xs:enumeration value="UZB"/>
+      <xs:enumeration value="VAT"/>
+      <xs:enumeration value="VCT"/>
+      <xs:enumeration value="VEN"/>
+      <xs:enumeration value="VGB"/>
+      <xs:enumeration value="VIR"/>
+      <xs:enumeration value="VNM"/>
+      <xs:enumeration value="VUT"/>
+      <xs:enumeration value="WLF"/>
+      <xs:enumeration value="WSM"/>
+      <xs:enumeration value="XKX"/>
+      <xs:enumeration value="YEM"/>
+      <xs:enumeration value="YUG"/>
+      <xs:enumeration value="ZAF"/>
+      <xs:enumeration value="ZAR"/>
+      <xs:enumeration value="ZMB"/>
+      <xs:enumeration value="ZWE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="productGroup">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="B"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="F"/>
+      <xs:enumeration value="G"/>
+      <xs:enumeration value="I"/>
+      <xs:enumeration value="L"/>
+      <xs:enumeration value="L"/>
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="T"/>
+      <xs:enumeration value="U"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="W"/>
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="Y"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="sparePartDomain">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+      <xs:enumeration value="5"/>
+      <xs:enumeration value="6"/>
+      <xs:enumeration value="7"/>
+      <xs:enumeration value="10"/>
+      <xs:enumeration value="11"/>
+      <xs:enumeration value="12"/>
+      <xs:enumeration value="13"/>
+      <xs:enumeration value="15"/>
+      <xs:enumeration value="16"/>
+      <xs:enumeration value="17"/>
+      <xs:enumeration value="20"/>
+      <xs:enumeration value="21"/>
+      <xs:enumeration value="22"/>
+      <xs:enumeration value="25"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="sparePartObjectType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FlashwareObject"/>
+      <xs:enumeration value="Part"/>
+      <xs:enumeration value="PartsList"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="sparePartUsageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="F"/>
+      <xs:enumeration value="K"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="I"/>
+      <xs:enumeration value="A"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="designApprovalUnit">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BC"/>
+      <xs:enumeration value="BD"/>
+      <xs:enumeration value="BF"/>
+      <xs:enumeration value="BK"/>
+      <xs:enumeration value="BS"/>
+      <xs:enumeration value="BZ"/>
+      <xs:enumeration value="CA"/>
+      <xs:enumeration value="GA"/>
+      <xs:enumeration value="GF"/>
+      <xs:enumeration value="GS"/>
+      <xs:enumeration value="KA"/>
+      <xs:enumeration value="KB"/>
+      <xs:enumeration value="KC"/>
+      <xs:enumeration value="KD"/>
+      <xs:enumeration value="KE"/>
+      <xs:enumeration value="KF"/>
+      <xs:enumeration value="KG"/>
+      <xs:enumeration value="KH"/>
+      <xs:enumeration value="KI"/>
+      <xs:enumeration value="KK"/>
+      <xs:enumeration value="KL"/>
+      <xs:enumeration value="KM"/>
+      <xs:enumeration value="KN"/>
+      <xs:enumeration value="KP"/>
+      <xs:enumeration value="KR"/>
+      <xs:enumeration value="KS"/>
+      <xs:enumeration value="KV"/>
+      <xs:enumeration value="KX"/>
+      <xs:enumeration value="KY"/>
+      <xs:enumeration value="NA"/>
+      <xs:enumeration value="NC"/>
+      <xs:enumeration value="NT"/>
+      <xs:enumeration value="NU"/>
+      <xs:enumeration value="NX"/>
+      <xs:enumeration value="NZ"/>
+      <xs:enumeration value="PA"/>
+      <xs:enumeration value="PC"/>
+      <xs:enumeration value="PF"/>
+      <xs:enumeration value="PH"/>
+      <xs:enumeration value="PM"/>
+      <xs:enumeration value="PS"/>
+      <xs:enumeration value="PT"/>
+      <xs:enumeration value="PU"/>
+      <xs:enumeration value="PX"/>
+      <xs:enumeration value="PY"/>
+      <xs:enumeration value="PZ"/>
+      <xs:enumeration value="VP"/>
+      <xs:enumeration value="VQ"/>
+      <xs:enumeration value="VR"/>
+      <xs:enumeration value="VS"/>
+      <xs:enumeration value="WA"/>
+      <xs:enumeration value="WB"/>
+      <xs:enumeration value="WH"/>
+      <xs:enumeration value="WI"/>
+      <xs:enumeration value="WM"/>
+      <xs:enumeration value="WP"/>
+      <xs:enumeration value="XX"/>
+      <xs:enumeration value="ZA"/>
+      <xs:enumeration value="ZB"/>
+      <xs:enumeration value="ZC"/>
+      <xs:enumeration value="ZD"/>
+      <xs:enumeration value="ZE"/>
+      <xs:enumeration value="ZF"/>
+      <xs:enumeration value="ZH"/>
+      <xs:enumeration value="ZL"/>
+      <xs:enumeration value="ZM"/>
+      <xs:enumeration value="ZN"/>
+      <xs:enumeration value="ZT"/>
+      <xs:enumeration value="ZV"/>
+      <xs:enumeration value="ZW"/>
+      <xs:enumeration value="ZZ"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="modelElementUsageMaturityLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="B"/>
+      <xs:enumeration value="C"/>
+      <xs:enumeration value="D"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="I"/>
+      <xs:enumeration value="L"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="R"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="T"/>
+      <xs:enumeration value="U"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="Y"/>
+      <xs:enumeration value="_"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="pointOfUsageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="L"/>
+      <xs:enumeration value="O"/>
+      <xs:enumeration value="V"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="partsListType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CK"/>
+      <xs:enumeration value="FS"/>
+      <xs:enumeration value="GV"/>
+      <xs:enumeration value="KP"/>
+      <xs:enumeration value="KW"/>
+      <xs:enumeration value="LK"/>
+      <xs:enumeration value="PH"/>
+      <xs:enumeration value="SA"/>
+      <xs:enumeration value="SK"/>
+      <xs:enumeration value="SV"/>
+      <xs:enumeration value="ZA"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="installationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="B"/>
+      <xs:enumeration value="H"/>
+      <xs:enumeration value="Z"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="fastenerCategory">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="H"/>
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="ND"/>
+      <xs:enumeration value="RB"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="SC"/>
+      <xs:enumeration value="SF"/>
+      <xs:enumeration value="SR"/>
+      <xs:enumeration value="SZ"/>
+      <xs:enumeration value="U"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="VD"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="fastenerType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SL"/>
+      <xs:enumeration value="LV"/>
+      <xs:enumeration value="SM"/>
+      <xs:enumeration value="SV"/>
+      <xs:enumeration value="LD"/>
+      <xs:enumeration value="KH"/>
+      <xs:enumeration value="KB"/>
+      <xs:enumeration value="AL"/>
+      <xs:enumeration value="AK"/>
+      <xs:enumeration value="VD"/>
+      <xs:enumeration value="SP"/>
+      <xs:enumeration value="SW"/>
+      <xs:enumeration value="SA"/>
+      <xs:enumeration value="SK"/>
+      <xs:enumeration value="SH"/>
+      <xs:enumeration value="HW"/>
+      <xs:enumeration value="HA"/>
+      <xs:enumeration value="HS"/>
+      <xs:enumeration value="SF"/>
+      <xs:enumeration value="FL"/>
+      <xs:enumeration value="R0"/>
+      <xs:enumeration value="RB"/>
+      <xs:enumeration value="NT"/>
+      <xs:enumeration value="SZ"/>
+      <xs:enumeration value="SC"/>
+      <xs:enumeration value="ZE"/>
+      <xs:enumeration value="GS"/>
+      <xs:enumeration value="GP"/>
+      <xs:enumeration value="SB"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="attachedPartInstallationUsage">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="F"/>
+      <xs:enumeration value="G"/>
+      <xs:enumeration value="M"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="mountingRestriction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="C"/>
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="I"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="mountingSide">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="I"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tighteningTorqueRiskClass">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="B"/>
+      <xs:enumeration value="C"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="reduceThreadEndProjection">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="X"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="partType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AO"/>
+      <xs:enumeration value="AW"/>
+      <xs:enumeration value="DS"/>
+      <xs:enumeration value="EB"/>
+      <xs:enumeration value="EW"/>
+      <xs:enumeration value="EZ"/>
+      <xs:enumeration value="GN"/>
+      <xs:enumeration value="LU"/>
+      <xs:enumeration value="MU"/>
+      <xs:enumeration value="NA"/>
+      <xs:enumeration value="RS"/>
+      <xs:enumeration value="TB"/>
+      <xs:enumeration value="TS"/>
+      <xs:enumeration value="WF"/>
+      <xs:enumeration value="ZB"/>
+      <xs:enumeration value="ZS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="masterDataMethod">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="3DM"/>
+      <xs:enumeration value="GEO"/>
+      <xs:enumeration value="KZ"/>
+      <xs:enumeration value="UV"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="partReleaseIndicator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NS"/>
+      <xs:enumeration value="PJ"/>
+      <xs:enumeration value="SE"/>
+      <xs:enumeration value="VS"/>
+      <xs:enumeration value="UN"/>
+      <xs:enumeration value="UP"/>
+      <xs:enumeration value="US"/>
+      <xs:enumeration value="UV"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="quantityUnit">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="0"/>
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+      <xs:enumeration value="5"/>
+      <xs:enumeration value="6"/>
+      <xs:enumeration value="7"/>
+      <xs:enumeration value="8"/>
+      <xs:enumeration value="9"/>
+      <xs:enumeration value="10"/>
+      <xs:enumeration value="11"/>
+      <xs:enumeration value="12"/>
+      <xs:enumeration value="13"/>
+      <xs:enumeration value="15"/>
+      <xs:enumeration value="16"/>
+      <xs:enumeration value="40"/>
+      <xs:enumeration value="41"/>
+      <xs:enumeration value="42"/>
+      <xs:enumeration value="43"/>
+      <xs:enumeration value="44"/>
+      <xs:enumeration value="45"/>
+      <xs:enumeration value="46"/>
+      <xs:enumeration value="47"/>
+      <xs:enumeration value="48"/>
+      <xs:enumeration value="49"/>
+      <xs:enumeration value="50"/>
+      <xs:enumeration value="51"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="coloringType">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+      <xs:enumeration value="5"/>
+      <xs:enumeration value="6"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="dataType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="G"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="Z"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="documentationObligation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="D"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="G"/>
+      <xs:enumeration value="K"/>
+      <xs:enumeration value="S"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="theftProtectionClass">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+      <xs:enumeration value="5"/>
+      <xs:enumeration value="NIL"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="intellectualProperty">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="O"/>
+      <xs:enumeration value="T"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="partMaturityLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="I"/>
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="_"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="recyclingPartType">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="remainsHandling">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NOT_AFFECTED"/>
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="L"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="R"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="W"/>
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+      <xs:enumeration value="5"/>
+      <xs:enumeration value="6"/>
+      <xs:enumeration value="7"/>
+      <xs:enumeration value="8"/>
+      <xs:enumeration value="9"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="exchangeability">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NOT_AFFECTED"/>
+      <xs:enumeration value="0"/>
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+      <xs:enumeration value="5"/>
+      <xs:enumeration value="6"/>
+      <xs:enumeration value="7"/>
+      <xs:enumeration value="8"/>
+      <xs:enumeration value="9"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="partUsageMaturityLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INVALID"/>
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="I"/>
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="X"/>
+      <xs:enumeration value="Y"/>
+      <xs:enumeration value="Z"/>
+      <xs:enumeration value="_"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tighteningTorqueType">
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="0"/>
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+      <xs:enumeration value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="releaseIndicator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NS"/>
+      <xs:enumeration value="PJ"/>
+      <xs:enumeration value="SE"/>
+      <xs:enumeration value="VS"/>
+      <xs:enumeration value="UN"/>
+      <xs:enumeration value="UP"/>
+      <xs:enumeration value="US"/>
+      <xs:enumeration value="UV"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="parameterType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INVALID_OBSOLETE"/>
+      <xs:enumeration value="FB"/>
+      <xs:enumeration value="FM"/>
+      <xs:enumeration value="FP"/>
+      <xs:enumeration value="FS"/>
+      <xs:enumeration value="FT"/>
+      <xs:enumeration value="PA"/>
+      <xs:enumeration value="PV"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="scriptType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INVALID_OBSOLETE"/>
+      <xs:enumeration value="CC"/>
+      <xs:enumeration value="DC"/>
+      <xs:enumeration value="FC"/>
+      <xs:enumeration value="LC"/>
+      <xs:enumeration value="SC"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="softwareType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INVALID_OBSOLETE"/>
+      <xs:enumeration value="EF"/>
+      <xs:enumeration value="EX"/>
+      <xs:enumeration value="MF"/>
+      <xs:enumeration value="MX"/>
+      <xs:enumeration value="SW"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="flashwareObjectUsageMaturityLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="I"/>
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="!"/>
+      <xs:enumeration value="_"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="flashwareRelevantObjectObjectType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FlashwareObject"/>
+      <xs:enumeration value="Part"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="flashwareRelationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="01"/>
+      <xs:enumeration value="02"/>
+      <xs:enumeration value="02M"/>
+      <xs:enumeration value="03"/>
+      <xs:enumeration value="03ME"/>
+      <xs:enumeration value="03MI"/>
+      <xs:enumeration value="07"/>
+      <xs:enumeration value="13MI"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="codeUsageMaturityLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="U"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="INVALID"/>
+      <xs:enumeration value="_"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="additionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BG"/>
+      <xs:enumeration value="CG"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="generalFeasibilityMaturityLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="U"/>
+      <xs:enumeration value="V"/>
+      <xs:enumeration value="INVALID"/>
+      <xs:enumeration value="_"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="geoPositionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CN"/>
+      <xs:enumeration value="FP"/>
+      <xs:enumeration value="REF"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="userSignatureRole">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A"/>
+      <xs:enumeration value="C"/>
+      <xs:enumeration value="E"/>
+      <xs:enumeration value="H"/>
+      <xs:enumeration value="O"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="R"/>
+      <xs:enumeration value="T"/>
+      <xs:enumeration value="X"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="introductionAdvice">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="I"/>
+      <xs:enumeration value="P"/>
+      <xs:enumeration value="R"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

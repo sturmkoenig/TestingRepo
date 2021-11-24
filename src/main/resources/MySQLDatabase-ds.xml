@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources xmlns="http://www.ironjacamar.org/doc/schema">
+ <datasource jndi-name="java:jboss/datasources/MySQLDatabase" enabled="true" 
+     use-java-context="true" pool-name="MySQLDatabase">
+  <connection-url>jdbc:mysql://localhost:3306/ifinances</connection-url>
+  <driver>mysql-connector-java-8.0.27.jar</driver>
+  <pool></pool>
+  <security>
+   <user-name>infinite</user-name>
+   <password>skills</password>
+  </security>
+ </datasource>
+</datasources>
