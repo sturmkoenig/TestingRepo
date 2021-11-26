@@ -15,6 +15,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import org.slf4j.Logger;
+
 import com.airhacks.entities.User;
 
 @Path("users")
@@ -25,20 +27,23 @@ public class SQLRequest {
 	@Inject
 	QueryService queryService;
 
+	@Inject
+	Logger logger;
+
 	@Context
 	UriInfo uriInfo;
 
 	@Path("query")
 	@GET
 	public List<User> getUser() {
-		List<User> users = queryService.getUsers();
-		return users;
+		return queryService.getUsers();
 	}
 
 	@GET
 	@Path("user/{id: \\d+}")
 	public Response getUserById(@PathParam("id") Long id) {
-		System.out.println(id);
+		String msg = String.format("User id: %d", id);
+		logger.info(msg);
 		User user = queryService.findUserById(id);
 		return Response.ok(user).status(Response.Status.OK).build();
 	}

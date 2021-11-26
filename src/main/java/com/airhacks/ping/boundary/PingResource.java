@@ -13,13 +13,12 @@ import com.airhacks.beans.MessageGenerator;
 @Path("ping")
 public class PingResource {
 
-    @Inject
-    MessageGenerator messageGenerator;
+	@Inject
+	MessageGenerator messageGenerator;
 
-    @GET
-    public String ping() {
-    	String message = messageGenerator.getMessage();
-        return message;
-    }
+	@GET
+	public String ping() {
+		return messageGenerator.getMessage();
+	}
 
 }
