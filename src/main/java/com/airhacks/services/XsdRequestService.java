@@ -15,18 +15,16 @@ import com.airhacks.entities.Car;
 
 @Path("XSD")
 public class XsdRequestService {
-	
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
 	public void xsd(String[] args) throws Exception {
-		JAXBContext jc = JAXBContext.newInstance(Car.class);   
+		JAXBContext jc = JAXBContext.newInstance(Car.class);
 		jc.generateSchema(new SchemaOutputResolver() {
-				@Override
-				public Result createOutput(String namespaceURI, String suggestedFileName)
-						throws IOException {
-					return new StreamResult(suggestedFileName);
-				}
+			@Override
+			public Result createOutput(String namespaceURI, String suggestedFileName) throws IOException {
+				return new StreamResult(suggestedFileName);
+			}
 
 		});
 	}

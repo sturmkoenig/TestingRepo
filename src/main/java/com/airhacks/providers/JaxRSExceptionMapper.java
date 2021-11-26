@@ -21,10 +21,10 @@ public class JaxRSExceptionMapper implements ExceptionMapper<ConstraintViolation
 	}
 
 	private List<String> prepareResponse(ConstraintViolationException exception) {
-		List<String> msg = exception.getConstraintViolations().stream().map(
-				ConstraintViolation -> ConstraintViolation.getPropertyPath() + ": " + ConstraintViolation.getMessage())
+		return exception.getConstraintViolations()
+				.stream()
+				.map(cv -> cv.getPropertyPath() + ": " + cv.getMessage())
 				.collect(Collectors.toList());
-		return msg;
 	}
 
 }

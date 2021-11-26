@@ -25,7 +25,8 @@ public class ImageService {
 		BufferedImage image = null;
 
 		try {
-			image = ImageIO.read(new File("C:\\Users\\llauer\\wallpaperflare.com_wallpaper.jpg"));
+			String pathname = "C:\\Users\\llauer\\wallpaperflare.com_wallpaper.jpg";
+			image = ImageIO.read(new File(pathname));
 			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 			ImageIO.write(image, "png", byteArrayOutputStream);
 			byte[] imageData = byteArrayOutputStream.toByteArray();

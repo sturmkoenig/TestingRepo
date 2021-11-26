@@ -15,7 +15,7 @@ import com.airhacks.entities.Car;
 @Path("xml")
 @Stateless
 public class XmlReader {
-	
+
 	@POST
 	@Path("read")
 	public Response readXml(@Valid Car car) {
