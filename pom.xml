@@ -51,6 +51,16 @@
 			<artifactId>jaxb-impl</artifactId>
 			<version>2.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.21</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.7</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -65,39 +75,39 @@
 				<version>3.0.0.Alpha1</version>
 			</plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
-				<version>2.5.0</version>
-				<executions>
-					<execution>
-						<id>schemagen</id>
-						<goals>
-							<goal>schemagen</goal>
-						</goals>
-					</execution>
-				</executions>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.codehaus.mojo</groupId> -->
+<!-- 				<artifactId>jaxb2-maven-plugin</artifactId> -->
+<!-- 				<version>2.5.0</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>schemagen</id> -->
+<!-- 						<goals> -->
+<!-- 							<goal>schemagen</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
 
-				<configuration>
-					<transformSchemas>
-						<transformSchema>
-							<uri>https://www.example.org/car</uri>
-							<toPrefix>cr</toPrefix>
-							<toFile>car.xsd</toFile>
-						</transformSchema>
-					</transformSchemas>
-					<verbose>true</verbose>
-					<schemaSourceExcludeFilters>
-						<noJaxbIndex
-							implementation="org.codehaus.mojo.jaxb2.shared.filters.pattern.PatternFileFilter">
-							<patterns>
-								<pattern>User.java</pattern>
-							</patterns>
-						</noJaxbIndex>
-					</schemaSourceExcludeFilters>
-					<createJavaDocAnnotations>false</createJavaDocAnnotations>
-				</configuration>
-			</plugin>
+<!-- 				<configuration> -->
+<!-- 					<transformSchemas> -->
+<!-- 						<transformSchema> -->
+<!-- 							<uri>https://www.example.org/car</uri> -->
+<!-- 							<toPrefix>cr</toPrefix> -->
+<!-- 							<toFile>car.xsd</toFile> -->
+<!-- 						</transformSchema> -->
+<!-- 					</transformSchemas> -->
+<!-- 					<verbose>true</verbose> -->
+<!-- 					<schemaSourceExcludeFilters> -->
+<!-- 						<noJaxbIndex -->
+<!-- 							implementation="org.codehaus.mojo.jaxb2.shared.filters.pattern.PatternFileFilter"> -->
+<!-- 							<patterns> -->
+<!-- 								<pattern>User.java</pattern> -->
+<!-- 							</patterns> -->
+<!-- 						</noJaxbIndex> -->
+<!-- 					</schemaSourceExcludeFilters> -->
+<!-- 					<createJavaDocAnnotations>false</createJavaDocAnnotations> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 		<finalName>SQLConnectionTest</finalName>
 	</build>
