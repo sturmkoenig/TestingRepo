@@ -73,6 +73,9 @@
 				<groupId>org.wildfly.plugins</groupId>
 				<artifactId>wildfly-maven-plugin</artifactId>
 				<version>3.0.0.Alpha1</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
 			</plugin>
 
 <!-- 			<plugin> -->
@@ -116,4 +119,41 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 	</properties>
+	<profiles>
+        <profile>
+            <id>standalone-mode</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <configuration>
+                            <skip>true</skip>
+                            <filename>${artifactId}.${packaging}</filename>
+                            <port>9990</port>
+                        </configuration>
+                        <executions>
+                            <!-- Deploy the application on install -->
+                            <execution>
+                                <id>deploy</id>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                            </execution>
+ 
+                            <execution>
+                                <id>undeploy</id>
+                                <goals>
+                                    <goal>undeploy</goal>
+                                </goals>
+                                <configuration>
+                                    <ignoreMissingDeployment>true</ignoreMissingDeployment>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+	</profiles>
 </project>
