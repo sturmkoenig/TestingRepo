@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "FINANCES_USER")
+//TODO: change from json to xml 
 public class User {
 
 	@Id
@@ -66,6 +67,9 @@ public class User {
 	@Column(name = "LAST_UPDATED_BY")
 	@XmlTransient
 	private String lastUpdatedBy;
+
+	@XmlTransient
+	private String socialSecurityNumber;
 
 	public Long getUserId() {
 		return userId;
