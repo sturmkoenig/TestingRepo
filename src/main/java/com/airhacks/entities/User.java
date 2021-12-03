@@ -68,7 +68,6 @@ public class User {
 	@XmlTransient
 	private String lastUpdatedBy;
 
-	@XmlTransient
 	private String socialSecurityNumber;
 
 	public Long getUserId() {
