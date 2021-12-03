@@ -17,8 +17,12 @@ public class Car {
 	@XmlElement
 	private Long price;
 
+	@XmlElement
+	private String producer;
+
 	@Override
 	public String toString() {
 		return this.name + " " + this.id + " costs: " + this.price.toString();
 	}
+
 }
